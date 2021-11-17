@@ -22,6 +22,8 @@ namespace FileAnalyzer
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string[] arrayDelFile;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace FileAnalyzer
             else
             {
                 string[] arrayFiles = Directory.GetFiles(textBoxPath.Text);
-                string[] arrayDelFile = new string[arrayFiles.Length];
+                arrayDelFile = new string[arrayFiles.Length];
 
                 for (int i = 0; i < arrayFiles.Length; i++)
                 {
@@ -67,7 +69,25 @@ namespace FileAnalyzer
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
+            int couter = 0;
 
+            if (arrayDelFile is null)
+            {
+                System.Windows.MessageBox.Show("Нет копий, не было проведено сканирование или копии не найдены!", "Нет копий!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                for (int i = 0; i < arrayDelFile.Length; i++)
+                {
+                    if (arrayDelFile[i] != null)
+                    {
+                        couter++;
+                        File.Delete(arrayDelFile[i]);
+                    }
+                }
+                labelCopiesRemoved.Content = couter;
+            }
         }
 
         private void ButtonPath_Click(object sender, RoutedEventArgs e)
