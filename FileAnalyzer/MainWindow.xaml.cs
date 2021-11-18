@@ -44,10 +44,15 @@ namespace FileAnalyzer
             {
                 System.Windows.MessageBox.Show("Нет пути для поиска файлов, определите целевую папку!", "Нет пути!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if ((bool)checkBoxCopy.IsChecked && textBoxPathCopy.Text == "")
+            {
+                System.Windows.MessageBox.Show("Нет пути для копирования файлов, определите целевую папку!", "Нет пути!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
                 string[] arrayFiles = Directory.GetFiles(textBoxPath.Text);
                 arrayDelCopyFile = new string[arrayFiles.Length];
+                progressBar.Maximum = arrayFiles.Length;
 
                 for (int i = 0; i < arrayFiles.Length; i++)
                 {
@@ -56,6 +61,8 @@ namespace FileAnalyzer
                     for (int j = 0; j < arrayFiles.Length; j++)
                     {
                         fileSecond = new FileInfo(arrayFiles[j]);
+                        progressBar.Value = i + 1;
+
                         if (i != j && i != last)
                         {
                             if (EqualsBytes(fileFirst, fileSecond))
@@ -74,22 +81,23 @@ namespace FileAnalyzer
                         }
                     }
                 }
-            }
-            if (counter == 0)
-            {
-                System.Windows.MessageBox.Show("Копии не найдены!", "", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                labelCopiesFound.Content = counter;
-                if ((bool)checkBoxCopy.IsChecked)
+
+                if (counter == 0)
                 {
-                    for (int i = 0; i < arrayDelCopyFile.Length; i++)
+                    System.Windows.MessageBox.Show("Копии не найдены!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    labelCopiesFound.Content = counter;
+                    if ((bool)checkBoxCopy.IsChecked)
                     {
-                        if (arrayDelCopyFile[i] != null)
+                        for (int i = 0; i < arrayDelCopyFile.Length; i++)
                         {
-                            FileInfo fileCopy = new FileInfo(arrayDelCopyFile[i]);
-                            fileCopy.MoveTo(textBoxPathCopy.Text + "\\" + fileCopy.Name);
+                            if (arrayDelCopyFile[i] != null)
+                            {
+                                FileInfo fileCopy = new FileInfo(arrayDelCopyFile[i]);
+                                fileCopy.MoveTo(textBoxPathCopy.Text + "\\" + fileCopy.Name);
+                            }
                         }
                     }
                 }
@@ -158,6 +166,9 @@ namespace FileAnalyzer
             textBoxPathCopy.Visibility = Visibility.Visible;
             buttonPathCopy.Visibility = Visibility.Visible;
             buttonDel.Visibility = Visibility.Hidden;
+
+            //todo Баг интерфейса
+            //labelCopiesRemovedContent.Content = "Перемещено копий:"; 
         }
 
         private void CheckBoxCopy_Unchecked(object sender, RoutedEventArgs e)
@@ -165,6 +176,8 @@ namespace FileAnalyzer
             textBoxPathCopy.Visibility = Visibility.Hidden;
             buttonPathCopy.Visibility = Visibility.Hidden;
             buttonDel.Visibility = Visibility.Visible;
+
+            labelCopiesRemovedContent.Content = "Удалено копий:";
         }
 
         private void ButtonPath_Click(object sender, RoutedEventArgs e)
@@ -176,10 +189,14 @@ namespace FileAnalyzer
 
         private void ButtonCansel_Click(object sender, RoutedEventArgs e)
         {
+
             textBoxPath.Clear();
+            textBoxPathCopy.Clear();
 
             labelCopiesFound.Content = "0";
             labelCopiesRemoved.Content = "0";
+
+            progressBar.Value = 0;
         }
     }
 }

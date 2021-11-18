@@ -9,15 +9,15 @@
         <Label Content="Путь к папке:" HorizontalAlignment="Left" Margin="25,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.184,-2.115" Padding="5,5,5,15"/>
         <Button x:Name="buttonPath" Content="..." HorizontalAlignment="Left" Margin="557,10,0,0" VerticalAlignment="Top" Width="35" Click="ButtonPath_Click" Height="23" />
         <TextBox x:Name="textBoxPath" HorizontalAlignment="Left" Height="23" Margin="215,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" RenderTransformOrigin="0.5,0.391"/>
-        <Label Content="Найдено копий:" HorizontalAlignment="Left" Margin="25,83,0,0" VerticalAlignment="Top" Padding="5,5,5,15"/>
-        <Label Content="Удалено копий:" HorizontalAlignment="Left" Margin="25,124,0,0" VerticalAlignment="Top" Padding="5,5,5,15"/>
+        <Label x:Name="labelCopiesFoundContent" Content="Найдено копий:" HorizontalAlignment="Left" Margin="25,83,0,0" VerticalAlignment="Top" Padding="5,5,5,15"/>
+        <Label x:Name="labelCopiesRemovedContent" Content="Удалено копий:" HorizontalAlignment="Left" Margin="25,124,0,0" VerticalAlignment="Top" Padding="5,5,5,15"/>
         <Label x:Name="labelCopiesRemoved" Content="0" HorizontalAlignment="Left" Margin="128,124,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelCopiesFound" Content="0" HorizontalAlignment="Left" Margin="128,83,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonStart" Content="Начать сканирование" HorizontalAlignment="Left" Margin="374,134,0,0" VerticalAlignment="Top" Width="136" Click="ButtonStart_Click"/>
         <Button x:Name="buttonDel" Content="Удалить копии" HorizontalAlignment="Left" Margin="269,134,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDel_Click"/>
         <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="515,134,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCansel_Click"/>
-        <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="15" Margin="269,114,0,0" VerticalAlignment="Top" Width="321" />
-        <Label Content="Прогресс анализа" HorizontalAlignment="Left" Margin="345,83,0,0" VerticalAlignment="Top"/>
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="15" Margin="269,114,0,0" VerticalAlignment="Top" Width="321" />
+        <Label Content="Прогресс анализа" HorizontalAlignment="Left" Margin="385,83,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxCopy" Content="Копировать в место удаления" HorizontalAlignment="Left" Margin="25,48,0,0" VerticalAlignment="Top" Padding="4,-1,0,15" Checked="CheckBoxCopy_Checked" Unchecked="CheckBoxCopy_Unchecked"/>
         <TextBox x:Name="textBoxPathCopy" HorizontalAlignment="Left" Height="23" Margin="215,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337"/>
         <Button x:Name="buttonPathCopy" Content="..." HorizontalAlignment="Left" Margin="557,46,0,0" VerticalAlignment="Top" Width="35" Click="ButtonPathCopy_Click" Height="23"/>
