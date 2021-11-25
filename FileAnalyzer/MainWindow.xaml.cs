@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace FileAnalyzer
@@ -37,9 +38,12 @@ namespace FileAnalyzer
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
             FileInfo fileFirst, fileSecond;
+            Stopwatch stopwatch = new Stopwatch();//Таймер
+
             int counter = 0;
             int last = -1;
 
+            stopwatch.Start();
             if (textBoxPath.Text == "")
             {
                 System.Windows.MessageBox.Show("Нет пути для поиска файлов, определите целевую папку!", "Нет пути!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -101,6 +105,10 @@ namespace FileAnalyzer
                         }
                     }
                 }
+                
+                stopwatch.Stop();
+                labelFileVerified.Content = arrayFiles.Length;
+                labelTime.Content = TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds);
             }
         }
 
@@ -195,8 +203,11 @@ namespace FileAnalyzer
 
             labelCopiesFound.Content = "0";
             labelCopiesRemoved.Content = "0";
+            labelFileVerified.Content = "";
+            labelTime.Content = "";
 
             progressBar.Value = 0;
+
         }
     }
 }
