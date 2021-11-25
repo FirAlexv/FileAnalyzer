@@ -185,7 +185,6 @@ namespace FileAnalyzer
 
         private void ButtonCansel_Click(object sender, RoutedEventArgs e)
         {
-
             textBoxPath.Clear();
             textBoxPathCopy.Clear();
 
@@ -195,7 +194,6 @@ namespace FileAnalyzer
             labelTime.Content = "";
 
             progressBar.Value = 0;
-
         }
     }
 }
