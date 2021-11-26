@@ -94,9 +94,9 @@ namespace FileAnalyzer
                     }
                 }
 
-                stopwatch.Stop();
-                labelFileVerified.Content = arrayFiles.Length;
-                labelTime.Content = TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds);
+                stopwatch.Stop();//Таймер
+                labelFileVerified.Content = arrayFiles.Length;//Длина файла
+                labelTime.Content = TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds);//Формат времени
             }
         }
 
