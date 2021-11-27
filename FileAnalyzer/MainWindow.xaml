@@ -16,7 +16,7 @@
         <Button x:Name="buttonStart" Content="Начать сканирование" HorizontalAlignment="Left" Margin="400,163,0,0" VerticalAlignment="Top" Width="136" Click="ButtonStart_Click"/>
         <Button x:Name="buttonDel" Content="Удалить копии" HorizontalAlignment="Left" Margin="297,163,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDel_Click"/>
         <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="541,163,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCansel_Click" RenderTransformOrigin="0.48,2.3"/>
-        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="15" Margin="300,109,0,0" VerticalAlignment="Top" Width="321" />
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="15" Margin="300,109,0,0" VerticalAlignment="Top" Width="316" />
         <Label Content="Прогресс анализа" HorizontalAlignment="Left" Margin="186,101,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxCopy" Content="Копировать в место удаления" HorizontalAlignment="Left" Margin="25,48,0,0" VerticalAlignment="Top" Padding="4,-1,0,15" Checked="CheckBoxCopy_Checked" Unchecked="CheckBoxCopy_Unchecked"/>
         <TextBox x:Name="textBoxPathCopy" HorizontalAlignment="Left" Height="23" Margin="215,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337"/>

@@ -31,7 +31,7 @@ namespace FileAnalyzer
             int counter = 0;
             int last = -1;
 
-            stopwatch.Start();
+            stopwatch.Start();//Старт
             if (textBoxPath.Text == "")
             {
                 System.Windows.MessageBox.Show("Нет пути для поиска файлов, определите целевую папку!", "Нет пути!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -57,7 +57,7 @@ namespace FileAnalyzer
 
                         if (i != j && i != last)
                         {
-                            if (EqualsBytes(fileFirst, fileSecond))
+                            if (EqualsBytes(fileFirst, fileSecond))//Слишком длинный файл. Данная операция в настоящее время поддерживает файлы размером меньше 2 ГБ
                             {
                                 counter++;
                                 if ((bool)checkBoxCopy.IsChecked)
@@ -94,7 +94,7 @@ namespace FileAnalyzer
                     }
                 }
 
-                stopwatch.Stop();//Таймер
+                stopwatch.Stop();//Стоп
                 labelFileVerified.Content = arrayFiles.Length;//Длина файла
                 labelTime.Content = TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds);//Формат времени
             }
